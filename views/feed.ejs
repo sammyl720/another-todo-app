@@ -1,0 +1,60 @@
+<% include includes/head %>
+    <div class="container">
+        <div class="row">
+            <div class="col s8 offset-s2 red lighten-2 white-text center-align z-depth-5">
+                <h5>
+                    <%= pageTitle %>
+                </h5>
+            </div>
+        </div>
+        <div class='section'></div>
+        <% include includes/form-add %>
+            <div class="section"></div>
+            <% if(todos.length > 0) { %>
+                <div class='row'>
+                    <div class='col s12 m10 offset-m1 collection with-header'>
+                        <div class="collection-header">
+                            <h4>
+                                Todo List
+                            </h4>
+                        </div>
+                        <% todos.forEach((todo, index) => { %>
+                            <% if(!todo.completed) { %>
+                                <div class="collection-item">
+                                    <%= todo.title %>
+                                        <small class="inline grey-text lightin-2">Created on: <%= todo.updatedAt.toLocaleDateString() %> <%= todo.updatedAt.toLocaleTimeString() %></small>
+                                        <div class="tooltip">
+                                            <span class="tooltiptext">
+                                            Mark Complete
+                                          </span>
+                                            <a href="/complete/<%= todo._id.toString() %>" class="secondary-content" alt='Mark Complete'><i class="material-icons">check_circle</i></a>
+                                        </div>
+                                </div>
+                                <% } else { %>
+                                    <div class="collection-item">
+                                        <%= todo.title %>
+                                            <small class="inline grey-text lightin-2">Completed on: <%= todo.createdAt.toLocaleDateString() %> <%= todo.createdAt.toLocaleTimeString() %>%></small>
+                                            <div class="tooltip">
+                                                <span class="tooltiptext">
+                                                Remove from List
+                                              </span>
+                                                <a href="/delete/<%= todo._id.toString() %>" class="secondary-content"><i class="material-icons">delete_forever</i></a>
+                                            </div>
+                                    </div>
+                                    <% } %>
+
+
+                                        <% }) %>
+                    </div>
+
+                </div>
+                <% } else { %>
+                    <div class="row">
+                        <div class="col s8 offset-s2 red lighten-2 white-text center-align">
+                            <p>Could not load posts </p>
+                        </div>
+                    </div>
+                    <% } %>
+
+    </div>
+    <% include includes/foot %>

@@ -1,0 +1,25 @@
+<div class="row">
+    <form action='/add' method='post'>
+        <div class="row">
+            <div class="input-field col s8 offset-s1">
+                <input id="title" type="text" name='title' class="validate" required>
+                <label for="title">To do</label>
+            </div>
+            <div class="switch col s2 offset-s1">
+                <label>
+                    Todo
+                    <input type="checkbox" name='completed'>
+                    <span class="lever"></span>
+                    Completed
+                  </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s4 offset-s4 ">
+                <input type="submit" value="Add" class="btn btn-large">
+            </div>
+        </div>
+
+    </form>
+</div>
